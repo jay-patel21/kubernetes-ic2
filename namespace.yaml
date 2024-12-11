@@ -1,0 +1,15 @@
+# namespaces.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: flask-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pg-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: redis-ns

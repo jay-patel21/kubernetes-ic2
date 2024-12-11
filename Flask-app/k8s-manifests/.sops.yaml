@@ -1,0 +1,5 @@
+creation_rules:
+  - gcp_kms: projects/flask-app-436123/locations/northamerica-northeast1/keyRings/ica2/cryptoKeys/ica2
+    # Specify any file patterns you want to auto-encrypt
+    path_regex: 'flask-secrets.yaml'
+    encrypted_regex: '^(data)$' 

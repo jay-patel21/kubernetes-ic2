@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment ## name of the deployment.
+  namespace: flask-ns ## name of the namespace
+  labels:
+    app: flask-app 
+spec:
+  replicas: 1 # number of replicas
+  selector:
+    matchLabels:
+      app: flask-app ## using this service will identify the pods related to this deployment 
+  template: ## all pods will be created base on this template (means all pods will have same config)
+    metadata:
+      labels:
+        app: flask-app
+        env: dev # environment 
+        version: "1.0.0"
+    spec:
+      containers:
+      - name: flask-app
+        image: northamerica-northeast1-docker.pkg.dev/braided-upgrade-435523-j8/ica2/ica2
+        envFrom:
+          - configMapRef: 
+              name: flask-configmap ## reference of the configmap
+              optional: false
+          - secretRef:
+              name: flask-secret ## reference of the secrets
+              optional: false
+        ports: ## pods will be running on this port
+        - containerPort: 5000 

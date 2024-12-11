@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-configmap # name of the config-map
+  namespace: pg-ns
+data:
+  POSTGRES_USER: imv27
+  POSTGRES_DB: mydb
